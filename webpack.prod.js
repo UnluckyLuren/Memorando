@@ -95,13 +95,6 @@ module.exports = {
 
           }),
 
-          new CopyPlugin({
-            patterns: [ 
-                { from: "src/html_pages", to: "html_pages/" }
-            ]
-          })
-
-
     ],
 
     devServer: {
