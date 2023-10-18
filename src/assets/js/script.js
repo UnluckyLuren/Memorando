@@ -26,3 +26,18 @@
             dificultades.classList.add("hidden"); // Ocultar los botones de dificultad
             juego.classList.remove("hidden"); // Mostrar el contenido del juego
         });
+
+// Inicializar el juego
+
+
+
+
+
+
+
+
+
+
+
+
+

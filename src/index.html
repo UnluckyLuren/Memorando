@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorando</title>
 
-    <link rel="icon" href="/images/logo provisional.png" type="png/img">
+    <link rel="icon" href="./assets/img/icono.png" type="png/img">
 
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -24,9 +24,9 @@
                 <button id="BTNplay" onclick="">Play</button>
                 <div class="hidden" id="dificultades" >
                     <h2>selecciona la dificultad</h2>
-                    <button id="facil" onclick="">Facil</button>
-                    <button id="normal"  onclick="">Normal</button>
-                    <button id="dificil"  onclick="">Dificil</button>
+                    <button id="facil" onclick="iniciarJuego()">Facil</button>
+                    <button id="normal"  onclick="iniciarJuego()">Normal</button>
+                    <button id="dificil"  onclick="iniciarJuego()">Dificil</button>
                 </div>
             </div>
         </div>
@@ -35,8 +35,84 @@
         </div>
     </main>
 
+    <!-- Empieza el juego -->
+
+    <div class="contGame disCero" id="contGame">
+
+        <div id="endGame" class="feedback">
+            <div class="modal">
+              <h2>¡BIEN JUGADO!</h2>
+             
+              <button id="levelUp" class="btnFeedback">
+              Siguiente nivel  
+              </button>
+              <button class="btnFeedback reiniciar">
+              ¿Reiniciar?  
+              </button>
+            </div>
+          </div> 
+        <div id="gameOver" class="feedback">
+            <div class="modal">
+              <h2>¡FELICIDADES!</h2>
+                <p>¡Has terminado todos los niveles!</p>
+              
+              <button class="btnFeedback reiniciar">
+              ¿Reiniciar?  
+              </button>
+            </div>
+          </div> 
+        <div id="acabanMovimientos" class="feedback">
+            <div class="modal">
+              <h2>¡Se terminaron los movimientos!</h2>
+                <p>¡Oh no! Se te han terminado el número máximo de movimientos</p>
+              
+              <button class="btnFeedback reiniciar">
+              ¿Reiniciar?  
+              </button>
+            </div>
+          </div> 
+        
+        <h1>Bienvenido al juego</h1>
+        <!-- <div class="botones">
+          <button class="myBtn" id="game1" ><h4>Juego 1</h4></button>
+          <button class="myBtn" id="game2" onclick="reparteTarjetas2();"><h4>Juego 2</h4></button>
+          <button class="myBtn" id="game3" onclick="repartirTarjetas3();"><h4>Juego 3</h4></button>
+        </div>    -->
+        <header class="upStats">
+            <div class="timer">
+              
+              <div class="movimientos">
+                <h5>Movimientos</h5>
+                <span id="mov">00</span> /
+                <span id="movTotal">00</span>
+              </div>
+              
+              <div class="reloj">
+                <h5>Tiempo</h5>
+                <span id="minutos">00</span> :
+                <span id="segundos">00</span>
+              </div>
+              
+              <div class="reloj">
+                <h5>Nivel</h5>
+                <span id="nivel">01</span>
+              </div>
+              
+            </div>
+          </header>
+        <main>
+           <div id="mesa" class="mesa"></div>
+        </main>
+        
+        
+        <div class="cuadroTexto" id="tablaNumeros">  </div>        
+
+    </div>
+
+
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/BG.js"></script>
+    <script src="./assets/js/logica.js"></script>
 
 </body>
 </html>
