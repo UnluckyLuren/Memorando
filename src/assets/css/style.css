@@ -96,8 +96,8 @@ button:hover{
 }
 
 .imgCard {
-    width: 100px;
-    height: 150px;
+    width: 12vw;
+    height: 37vh;
     border-radius: 0.3em;
     margin: 0;
     padding: 0;
@@ -118,6 +118,8 @@ button:hover{
   
   .contGame main {
     flex-grow: 1;
+    width: 100vw;
+    height: max-content;
     display: flex;
     justify-content: center;
     position: relative;
@@ -128,19 +130,21 @@ button:hover{
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
-    max-width: 50rem;
-    margin: auto;
+    width: max-content;
+    margin: 5em 0 0 5rem;
+    height: max-content;
+    /* margin: auto; */
   }
   
   .tarjeta {
-    width: 100px;
-    height: 150px;
+    width: 10vw;
+    height: 31vh;
     margin: 0.5rem;
     border-radius: 0.3em;
     background-image: url("../img/funda.jpeg");
     background-size: cover;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
+    /* position: relative; */
     transition: 0.3s;
     cursor: pointer;
    backface-visibility:hidden;
@@ -225,6 +229,7 @@ button:hover{
   
   body {
     margin: auto;
+    padding-bottom: 5em;
     min-height: 100vh;
     color: #fff;
     text-align: center;
@@ -352,6 +357,8 @@ button:hover{
     background:#2c2c2cbd; 
    visibility:hidden;
     z-index:10;
+    position: absolute;
+    top: 0;
   }
   
   .btnFeedback{

@@ -1,5 +1,5 @@
 var movimientos = 0;
-var grupoTarjetas1 = [ ["./assets/img/Cartas/1.jpeg", "./assets/img/Cartas/uno.jpeg"], ["./assets/img/Cartas/2.jpeg", "./assets/img/Cartas/dos.jpeg"],  ["🧔", "😎"],  ["🙉", "💣"] ];
+var grupoTarjetas1 = [ ["./assets/img/Cartas/1.png", "./assets/img/Cartas/uno.png"], ["./assets/img/Cartas/2.png", "./assets/img/Cartas/dos.png"],  ["./assets/img/Cartas/3.png", "./assets/img/Cartas/tres.png"],  ["./assets/img/Cartas/4.png", "./assets/img/Cartas/cuatro.png"] ];
 var nivelActual = 0;
 var niveles=[
      {
@@ -94,6 +94,7 @@ function iniciarJuego(){
         if(movimientos > niveles[nivelActual].movimientosMax){
           function finJuego(){
             document.querySelector("#acabanMovimientos").style.visibility="visible";
+            document.querySelector("#endGame").style.visibility="hidden";
           }
           setTimeout(finJuego,1500);
           return;
@@ -202,8 +203,9 @@ function iniciaReloj(){
 
    
    var cartasRestantes = document.querySelectorAll(".tarjeta:not(.Acertada)");
+   var movimientosMaxTexto = niveles[nivelActual].movimientosMax;
 
-   if(cartasRestantes.length === 0) {
+   if(cartasRestantes.length === 0 || movimientos > movimientosMaxTexto) {
        clearInterval(funcReloj);
    }
     
@@ -253,202 +255,202 @@ function perdiste(tarjetasVolteadas){
 
 /*==============MESA 2==============*/
 
-var grupoTarjetas2 = ["😻", "💋", "💦", "🧠", "🧔", "😎", "🙉", "💣"];
-var totalTarjetas2 = grupoTarjetas2.concat(grupoTarjetas2);
-var movimientos = 0;
+// var grupoTarjetas2 =  [ ["./assets/img/Cartas/5.png", "./assets/img/Cartas/cinco.png"], ["./assets/img/Cartas/6.png", "./assets/img/Cartas/seis.png"],  ["./assets/img/Cartas/7.png", "./assets/img/Cartas/siete.png"],  ["./assets/img/Cartas/8.png", "./assets/img/Cartas/ocho.png"] ];
+// var totalTarjetas2 = grupoTarjetas2.concat(grupoTarjetas2);
+// var movimientos = 0;
 
-function barajeaTarjetas2(){
-    var resultado = totalTarjetas2.sort(
-      function(){
-        return 0.5 - Math.random();
-      }
-    );
-   return resultado;
-}
+// function barajeaTarjetas2(){
+//     var resultado = totalTarjetas2.sort(
+//       function(){
+//         return 0.5 - Math.random();
+//       }
+//     );
+//    return resultado;
+// }
 
 
-function reparteTarjetas2() {
+// function reparteTarjetas2() {
   
-  var tarjetasRevueltas = barajeaTarjetas2(); 
-  var mesita = document.querySelector("#mesa");
-  mesita.innerHTML = "";
-   tarjetasRevueltas.forEach(function (element){
-     var miTarjeta = document.createElement("div");
-      miTarjeta.innerHTML = 
-      "<div class='tarjeta' data-valor= " + element + ">"+
-        "<div class='tarjeta__contenido'>" +
-        '<img src="'+element+'" class="imgCard" > </img>'+
-        "</div>" +
-    "</div>"
-     ;
-     mesita.appendChild(miTarjeta);
-   });
+//   var tarjetasRevueltas = barajeaTarjetas2(); 
+//   var mesita = document.querySelector("#mesa");
+//   mesita.innerHTML = "";
+//    tarjetasRevueltas.forEach(function (element){
+//      var miTarjeta = document.createElement("div");
+//       miTarjeta.innerHTML = 
+//       "<div class='tarjeta' data-valor= " + element + ">"+
+//         "<div class='tarjeta__contenido'>" +
+//         '<img src="'+element+'" class="imgCard" > </img>'+
+//         "</div>" +
+//     "</div>"
+//      ;
+//      mesita.appendChild(miTarjeta);
+//    });
   
   
-  function descubrir() {
-    var totalDescubiertas = document.querySelectorAll(".descubierta:not(.Acertada)");
-    if (totalDescubiertas.length > 1){
-      return;
-    }
-    this.classList.add("descubierta");
+//   function descubrir() {
+//     var totalDescubiertas = document.querySelectorAll(".descubierta:not(.Acertada)");
+//     if (totalDescubiertas.length > 1){
+//       return;
+//     }
+//     this.classList.add("descubierta");
     
-    var cartasVolteadas = document.querySelectorAll(".descubierta:not(.Acertada)");
-    if (cartasVolteadas.length < 2){
-      return;
-    }
-  compararTarjetas(cartasVolteadas);
+//     var cartasVolteadas = document.querySelectorAll(".descubierta:not(.Acertada)");
+//     if (cartasVolteadas.length < 2){
+//       return;
+//     }
+//   compararTarjetas(cartasVolteadas);
     
-}
+// }
   
-document.querySelectorAll(".tarjeta").forEach( function(tarjetitaa){
-  tarjetitaa.addEventListener("click", descubrir);
- });
-  function iniciaReloj(){
-  var segundos = 0;
-  var minutos = 1;
-  var segundosTexto;
-  var minutosTexto;
-  var cronometro;
+// document.querySelectorAll(".tarjeta").forEach( function(tarjetitaa){
+//   tarjetitaa.addEventListener("click", descubrir);
+//  });
+//   function iniciaReloj(){
+//   var segundos = 0;
+//   var minutos = 1;
+//   var segundosTexto;
+//   var minutosTexto;
+//   var cronometro;
     
-  function relojCorre(){
-   segundos--;//decrecimiento de segundos
+//   function relojCorre(){
+//    segundos--;//decrecimiento de segundos
     
-     if(segundos < 0){
-       segundos = 59;
-       minutos--;
-       }
+//      if(segundos < 0){
+//        segundos = 59;
+//        minutos--;
+//        }
     
-     if(minutos< 0){
-       segundos = 0;
-       minutos = 0;
-       clearInterval(cronometro);
-     }
+//      if(minutos< 0){
+//        segundos = 0;
+//        minutos = 0;
+//        clearInterval(cronometro);
+//      }
     
-    segundosTexto = segundos;
-    minutosTexto = minutos;
+//     segundosTexto = segundos;
+//     minutosTexto = minutos;
     
-    if(segundos < 10){
-     segundosTexto = "0"+ segundos ;
-    } 
-     if(minutos < 10){
-     minutosTexto =  "0"+minutos ;
-    } 
+//     if(segundos < 10){
+//      segundosTexto = "0"+ segundos ;
+//     } 
+//      if(minutos < 10){
+//      minutosTexto =  "0"+minutos ;
+//     } 
      
-    document.querySelector("#segundos").innerText = segundosTexto;
-    document.querySelector("#minutos").innerText = minutosTexto;
+//     document.querySelector("#segundos").innerText = segundosTexto;
+//     document.querySelector("#minutos").innerText = minutosTexto;
     
-    }  
-cronometro = setInterval(relojCorre, 1000);
-}
-  iniciaReloj(); 
+//     }  
+// cronometro = setInterval(relojCorre, 1000);
+// }
+//   iniciaReloj(); 
   
-}
+// }
 
-function compararTarjetas(cartasVolteadas){
-     if(cartasVolteadas[0].dataset.img === cartasVolteadas[1].dataset.img){
-      ganar(cartasVolteadas);    
-    }else{
-     perder(cartasVolteadas);
-    }  
-}
+// function compararTarjetas(cartasVolteadas){
+//      if(cartasVolteadas[0].dataset.img === cartasVolteadas[1].dataset.img){
+//       ganar(cartasVolteadas);    
+//     }else{
+//      perder(cartasVolteadas);
+//     }  
+// }
 
-function ganar(cartasVolteadas){
-  cartasVolteadas.forEach(function(tarjetita){
-    tarjetita.classList.add("Acertada");
-  });
-   window.alert("Ganaste! abuebo" + cartasVolteadas[0].dataset.img +cartasVolteadas[1].dataset.img);
-}
+// function ganar(cartasVolteadas){
+//   cartasVolteadas.forEach(function(tarjetita){
+//     tarjetita.classList.add("Acertada");
+//   });
+//    window.alert("Ganaste! abuebo" + cartasVolteadas[0].dataset.img +cartasVolteadas[1].dataset.img);
+// }
 
-function perder(cartasVolteadas){
-  cartasVolteadas.forEach(function(tarjetita){
-    tarjetita.classList.remove("descubierta")
-  })
-    window.alert("Nel, hijín, vuelvelo a intentar."+ cartasVolteadas[0].dataset.img + cartasVolteadas[1].dataset.img);
-}
+// function perder(cartasVolteadas){
+//   cartasVolteadas.forEach(function(tarjetita){
+//     tarjetita.classList.remove("descubierta")
+//   })
+//     window.alert("Nel, hijín, vuelvelo a intentar."+ cartasVolteadas[0].dataset.img + cartasVolteadas[1].dataset.img);
+// }
 
 
 
-// ==========JUEGO 3===========
+// // ==========JUEGO 3===========
 
-var tarjetasJuego3 = [ "🎅", "😈", "💀", "💩", "🤡", "👽", "🐶", "🦍"];
-var juegoCompleto = tarjetasJuego3.concat(tarjetasJuego3); 
-var movimientos = 0;
+// var tarjetasJuego3 = [ "🎅", "😈", "💀", "💩", "🤡", "👽", "🐶", "🦍"];
+// var juegoCompleto = tarjetasJuego3.concat(tarjetasJuego3); 
+// var movimientos = 0;
 
-function barajeaTarjetas3(){
-    var resultado = juegoCompleto.sort(
-      function(){
-        return 0.5 - Math.random();
-      }
-    );
-   return resultado;
-}
+// function barajeaTarjetas3(){
+//     var resultado = juegoCompleto.sort(
+//       function(){
+//         return 0.5 - Math.random();
+//       }
+//     );
+//    return resultado;
+// }
 
-function repartirTarjetas3 (){
+// function repartirTarjetas3 (){
   
-  var tarjetasRevueltas3 = barajeaTarjetas3();
-   var mesita3 = document.querySelector("#mesa");
-  mesita3.innerHTML = "";
+//   var tarjetasRevueltas3 = barajeaTarjetas3();
+//    var mesita3 = document.querySelector("#mesa");
+//   mesita3.innerHTML = "";
   
-  tarjetasRevueltas3.forEach(function(icono){
-    var tarjetita = document.createElement("div");
-    tarjetita.innerHTML = 
-            "<div class='tarjeta' data-valor= " + 
-            icono +
-            ">"+
-            "<div class='tarjeta__contenido'>" +
-                '<img src="'+icono+'" class="imgCard" > </img>'+
-            "</div>" +
-        "</div>"   
-     ;
-    mesita3.appendChild(tarjetita);
-  });
+//   tarjetasRevueltas3.forEach(function(icono){
+//     var tarjetita = document.createElement("div");
+//     tarjetita.innerHTML = 
+//             "<div class='tarjeta' data-valor= " + 
+//             icono +
+//             ">"+
+//             "<div class='tarjeta__contenido'>" +
+//                 '<img src="'+icono+'" class="imgCard" > </img>'+
+//             "</div>" +
+//         "</div>"   
+//      ;
+//     mesita3.appendChild(tarjetita);
+//   });
   
-  function descubrir() {
+//   function descubrir() {
     
-  var tarjetitasVolteadas = document.querySelectorAll(".descubierta:not(.Acertada)");
+//   var tarjetitasVolteadas = document.querySelectorAll(".descubierta:not(.Acertada)");
  
-   if (tarjetitasVolteadas.length > 1){
-     return;
-   } this.classList.add("descubierta");
+//    if (tarjetitasVolteadas.length > 1){
+//      return;
+//    } this.classList.add("descubierta");
     
-  var lasVolteadas = document.querySelectorAll(".descubierta:not(.Acertada)");
-    if(lasVolteadas.length < 2 ){
-      return;
-    }
-    comparacionTarjetas(lasVolteadas);
+//   var lasVolteadas = document.querySelectorAll(".descubierta:not(.Acertada)");
+//     if(lasVolteadas.length < 2 ){
+//       return;
+//     }
+//     comparacionTarjetas(lasVolteadas);
     
-  }
+//   }
     
-document.querySelectorAll(".tarjeta").forEach( function(tarjetitaa){
-  tarjetitaa.addEventListener("click", descubrir);
- });
+// document.querySelectorAll(".tarjeta").forEach( function(tarjetitaa){
+//   tarjetitaa.addEventListener("click", descubrir);
+//  });
   
-}
+// }
 
-  function comparacionTarjetas(lasVolteadas){
-  if(lasVolteadas[0].dataset.value === lasVolteadas[1].dataset.value) {
-      acierto(lasVolteadas);
-    }else{
-     error(lasVolteadas); 
-    }  
-  }
+//   function comparacionTarjetas(lasVolteadas){
+//   if(lasVolteadas[0].dataset.value === lasVolteadas[1].dataset.value) {
+//       acierto(lasVolteadas);
+//     }else{
+//      error(lasVolteadas); 
+//     }  
+//   }
   
-  function acierto(lasVolteadas){
-    var acertadas = document.querySelectorAll(".descubierta");
-    acertadas.forEach(function(correcta){
-      correcta.classList.add("Acertada");
-    });
-    console.log("Acertaste" + lasVolteadas[0].dataset.value + lasVolteadas[1].dataset.value);
-  }
+//   function acierto(lasVolteadas){
+//     var acertadas = document.querySelectorAll(".descubierta");
+//     acertadas.forEach(function(correcta){
+//       correcta.classList.add("Acertada");
+//     });
+//     console.log("Acertaste" + lasVolteadas[0].dataset.value + lasVolteadas[1].dataset.value);
+//   }
   
-  function error(lasVolteadas){
-    var erroneas = document.querySelectorAll(".descubierta");
-    erroneas.forEach(function(errada){
-      errada.classList.remove("descubierta");
-    });
+//   function error(lasVolteadas){
+//     var erroneas = document.querySelectorAll(".descubierta");
+//     erroneas.forEach(function(errada){
+//       errada.classList.remove("descubierta");
+//     });
     
-    console.log("Fallaste" + lasVolteadas[0].dataset.value + lasVolteadas[1].dataset.value );
-  }
+//     console.log("Fallaste" + lasVolteadas[0].dataset.value + lasVolteadas[1].dataset.value );
+//   }
 
 
 
